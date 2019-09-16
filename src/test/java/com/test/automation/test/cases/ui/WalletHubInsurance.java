@@ -35,7 +35,7 @@ public class WalletHubInsurance extends AbstractBaseTest {
 		waitTime = (long)AppConstants.TIME_OUT.getValue();
 	}
     
-	@Test(priority = 0, enabled = false)
+	@Test(priority = 0)
     public void signupWalletHub() {
 		this.walletHubSignupPage.setDriver(this.driver);
 		this.userAction.launchUrl(this.driver, this.configProps.getProperty("wallethub.application.signup.url").trim());
