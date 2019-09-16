@@ -28,7 +28,7 @@ public class ContextRunner implements CommandLineRunner{
 		test.setName("Test");// it will create <test name="Test">
 		
 		List<XmlClass> classes = new ArrayList<XmlClass>();
-		//classes.add(new XmlClass("com.test.automation.test.cases.ui.FacebookPostMessage"));
+		classes.add(new XmlClass("com.test.automation.test.cases.ui.FacebookPostMessage"));
 		classes.add(new XmlClass("com.test.automation.test.cases.ui.WalletHubInsurance"));
 		test.setXmlClasses(classes);//it will create <class name="test.failures.Child"  /> under <classes>
 		
