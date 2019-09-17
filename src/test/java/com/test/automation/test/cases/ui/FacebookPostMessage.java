@@ -67,6 +67,6 @@ public class FacebookPostMessage extends AbstractBaseTest {
 	
 	@AfterMethod
 	public void finishTest() {
-		this.driver.quit();
+		//this.driver.quit();
 	}
 }
