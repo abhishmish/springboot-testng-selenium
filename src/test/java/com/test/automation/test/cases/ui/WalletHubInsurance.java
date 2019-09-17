@@ -81,6 +81,6 @@ public class WalletHubInsurance extends AbstractBaseTest {
 	
 	@AfterMethod
 	public void finishTest() {
-		this.driver.quit();
+		//this.driver.quit();
 	}
 }
