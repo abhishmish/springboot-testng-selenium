@@ -18,7 +18,6 @@ import com.test.automation.common.DriverFactory;
 @Configuration
 @ComponentScan(basePackages = { "com.test.automation" })
 public class BeanConfig{
-	private WebDriver driver;
 	
 	@Autowired
 	private ConfigProperties configProps;
@@ -31,23 +30,21 @@ public class BeanConfig{
 	@Bean
 	@Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	@DependsOn(value = {"configProperties"})
-	public WebDriver getDriver() {
-		if(!(driver instanceof WebDriver)) {
-			this.driver = this.getBrowserDriver();
-		}
-		return this.driver;
+	public WebDriver getDriver() {	
+		return this.getBrowserDriver();
 	}
 	
 	private WebDriver getBrowserDriver() {		
+		WebDriver driver = null;
 		try {
 			if(configProps.getProperty("browser.name").trim().equalsIgnoreCase(AppConstants.CHROME.getValue().toString())) {
-				this.driver = DriverFactory.getDriver(ChromeDriver.class);
+				driver = DriverFactory.getDriver(ChromeDriver.class);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(0);
 		}
 		
-		return this.driver;
+		return driver;
 	}
 }

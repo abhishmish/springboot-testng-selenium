@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -16,8 +17,10 @@ import com.test.automation.test.util.AbstractBaseTest;
 
 public class FacebookPostMessage extends AbstractBaseTest {
      
-	@Autowired @Nonnull
 	private WebDriver driver;
+	
+	@Autowired
+	private ApplicationContext context;
 	
 	@Autowired @Nonnull
 	private FacebookLoginPageComponent fbLoginPage;
@@ -35,6 +38,7 @@ public class FacebookPostMessage extends AbstractBaseTest {
 	
 	@BeforeMethod
 	public void testSetup() {
+		this.driver = context.getBean(WebDriver.class);
 		fbLoginPage.setDriver(this.driver);
 		fbHomePage.setDriver(this.driver);
 		waitTime = (long)AppConstants.TIME_OUT.getValue();

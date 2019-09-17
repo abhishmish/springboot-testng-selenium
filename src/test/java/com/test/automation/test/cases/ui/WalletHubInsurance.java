@@ -2,6 +2,7 @@ package com.test.automation.test.cases.ui;
 
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -13,8 +14,10 @@ import com.test.automation.test.util.AbstractBaseTest;
 
 public class WalletHubInsurance extends AbstractBaseTest {
      
-	@Autowired
 	private WebDriver driver;
+	
+	@Autowired
+	private ApplicationContext context;
 	
 	@Autowired
 	private WalletHubSignupPageComponent walletHubSignupPage;
@@ -31,7 +34,8 @@ public class WalletHubInsurance extends AbstractBaseTest {
 	private long waitTime;
 	
 	@BeforeMethod
-	public void testSetup() {		
+	public void testSetup() {	
+		this.driver = context.getBean(WebDriver.class);
 		waitTime = (long)AppConstants.TIME_OUT.getValue();
 	}
     
